@@ -3,6 +3,23 @@
 
 {% block content %}
 
-    <h1>TASKS</h1>
+<h1>TASKS</h1>
+
+<ul>
+    {% for task in tasks %}
+
+    <li>
+        <a href="{% url 'task_detail' task.id %}">
+            {% if task.important %}
+            <strong>{{task.title}}</strong>
+            {% else %}
+            {{task.title}}
+
+            <p>{{task.description}}</p>
+            <p>{{task.user.username}}</p>
+        </a>
+    </li>
+    {% endfor %}
+</ul>
 
 {% endblock %}
